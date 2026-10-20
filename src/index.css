@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --clr-primary: #4f46e5;
+  --clr-primary-2: #7c3aed;
+  --clr-bg: #f0f2f8;
+  --clr-surface: #ffffff;
+  --clr-border: rgba(0, 0, 0, .07);
+  --clr-text: #1a202c;
+  --clr-muted: #718096;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Header ── */
+.app-header {
+  background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 55%, #7c3aed 100%);
+  padding: 1.25rem 0;
+  box-shadow: 0 4px 24px rgba(79, 70, 229, .4);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.01em;
+}
+
+.header-subtitle {
+  font-size: .72rem;
+  color: rgba(255, 255, 255, .6);
+}
+
+/* ── Main ── */
+.app-main { padding: 2rem 0 4rem; }
+
+/* ── Card ── */
+.card-custom {
+  background: var(--clr-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--clr-border);
+  padding: 1.75rem;
+  animation: fadeInUp .35s ease both;
+}
+
+/* ── Section labels ── */
+.section-label {
+  font-size: .67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--clr-primary);
+  margin-bottom: .25rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  margin-bottom: 1.1rem;
+}
+
+/* ── Search ── */
+.search-input-wrap { position: relative; }
+
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--clr-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  border-radius: 10px;
+  border: 1.5px solid #dde1ea;
+  padding: .75rem 1rem .75rem 2.7rem;
+  font-size: .95rem;
+  background: #f8f9ff;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3.5px rgba(79, 70, 229, .13);
+  background: #fff;
+  outline: none;
+}
+
+.search-btn {
+  border-radius: 10px;
+  padding: .75rem 1.5rem;
+  font-weight: 600;
+  font-size: .95rem;
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-2));
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, .35);
+  transition: opacity .18s, transform .15s, box-shadow .18s;
+  white-space: nowrap;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.search-btn:hover  { opacity: .92; transform: translateY(-1px); }
+.search-btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(79, 70, 229, .3); }
+
+/* ── Loader ── */
+.loader-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  padding: 2.5rem 0;
+  animation: fadeIn .2s ease both;
+}
+
+.loader-ring {
+  width: 44px;
+  height: 44px;
+  border: 3.5px solid rgba(79, 70, 229, .15);
+  border-top-color: var(--clr-primary);
+  border-radius: 50%;
+  animation: spin .65s linear infinite;
+}
+
+.loader-text {
+  font-size: .83rem;
+  color: var(--clr-muted);
+  font-weight: 500;
+}
+
+/* ── Brand list ── */
+.brand-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid var(--clr-border);
+  margin-bottom: .45rem;
+  padding: .7rem 1rem;
+  background: var(--clr-surface);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .18s, box-shadow .18s, transform .14s, background .18s;
+  animation: fadeInUp .28s ease both;
+}
+
+.brand-item:hover {
+  border-color: rgba(79, 70, 229, .35);
+  box-shadow: 0 2px 10px rgba(79, 70, 229, .1);
+  transform: translateY(-1px);
+  background: #fafbff;
+}
+
+.brand-item.active {
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, .32);
+  transform: translateY(-1px);
+}
+
+/* Текстовая часть — занимает всё доступное место, но не выталкивает бейдж */
+.brand-item-text {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Название бренда — не переносится, не сжимается, но обрезается с многоточием если очень длинное */
+.brand-item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  max-width: 55%;
+}
+
+/* Описание детали — занимает остаток, обрезается первым */
+.brand-item-desc {
+  font-size: .8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Бейдж со штуками — всегда видимый, не сжимается */
+.brand-badge {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2em .6em;
+  border-radius: 20px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* stagger */
+.brand-item:nth-child(1) { animation-delay:  0ms; }
+.brand-item:nth-child(2) { animation-delay: 45ms; }
+.brand-item:nth-child(3) { animation-delay: 90ms; }
+.brand-item:nth-child(4) { animation-delay:135ms; }
+.brand-item:nth-child(5) { animation-delay:180ms; }
+.brand-item:nth-child(n+6){ animation-delay:220ms; }
+
+/* ── Results table ── */
+.table-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--clr-surface);
+}
+
+.results-table th {
+  background: #f7f8ff;
+  font-size: .69rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-weight: 700;
+  color: var(--clr-muted);
+  padding: .8rem 1rem;
+  border-bottom: 1.5px solid var(--clr-border);
+  white-space: nowrap;
+}
+
+.results-table td {
+  padding: .85rem 1rem;
+  border-bottom: 1px solid var(--clr-border);
+  font-size: .88rem;
+  vertical-align: middle;
+}
+
+.results-table tbody tr {
+  animation: fadeIn .22s ease both;
+  transition: background .14s;
+}
+
+.results-table tbody tr:last-child td { border-bottom: none; }
+
+.results-table tbody tr:hover { background: #fafbff; }
+
+.results-table tbody tr.is-main { background: rgba(79, 70, 229, .04); }
+.results-table tbody tr.is-main td { font-weight: 600; }
+.results-table tbody tr.is-main:hover { background: rgba(79, 70, 229, .07); }
+
+/* row stagger */
+.results-table tbody tr:nth-child(1) { animation-delay:  0ms; }
+.results-table tbody tr:nth-child(2) { animation-delay: 35ms; }
+.results-table tbody tr:nth-child(3) { animation-delay: 70ms; }
+.results-table tbody tr:nth-child(4) { animation-delay:105ms; }
+.results-table tbody tr:nth-child(5) { animation-delay:140ms; }
+.results-table tbody tr:nth-child(n+6){ animation-delay:175ms; }
+
+.col-price { text-align: right; }
+.col-stock { text-align: center; }
+
+.text-accent { color: var(--clr-primary); }
+
+.results-count {
+  font-weight: 400;
+  font-size: .83rem;
+  color: var(--clr-muted);
+  margin-left: .5rem;
+}
+
+.text-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .25em;
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .22em .6em;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.stock-badge.in  { background: rgba(5, 150, 105, .1);  color: #059669; }
+.stock-badge.out { background: rgba(107,114,128, .1); color: #718096; }
+
+.footnote {
+  font-size: .76rem;
+  color: var(--clr-muted);
+  margin-top: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.footnote-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: rgba(79, 70, 229, .1);
+  border: 1px solid rgba(79, 70, 229, .3);
+  flex-shrink: 0;
+}
+
+/* ── Alerts ── */
+.alert-custom {
+  border-radius: 10px;
+  border: none;
+  font-size: .9rem;
+  animation: fadeIn .28s ease both;
+}
+
+/* ── Mobile: table → cards ── */
+@media (max-width: 700px) {
+  .results-table,
+  .results-table thead,
+  .results-table tbody,
+  .results-table th,
+  .results-table td,
+  .results-table tr { display: block; }
+
+  .results-table thead { display: none; }
+
+  .table-wrap { border: none; box-shadow: none; border-radius: 0; background: transparent; }
+
+  .results-table tbody tr {
+    background: var(--clr-surface);
+    border-radius: 12px;
+    border: 1.5px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: .65rem;
+    overflow: hidden;
+    animation: fadeInUp .3s ease both;
+  }
+
+  .results-table tbody tr.is-main {
+    border-color: rgba(79, 70, 229, .28);
+    background: rgba(79, 70, 229, .025);
+  }
+
+  .results-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem .9rem;
+    border-bottom: 1px solid var(--clr-border);
+    font-size: .875rem;
+    gap: .5rem;
+  }
+
+  .results-table td:last-child { border-bottom: none; }
+
+  .results-table td::before {
+    content: attr(data-label);
+    font-size: .67rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--clr-muted);
+    flex-shrink: 0;
+    min-width: 80px;
+  }
+
+  /* col-price / col-stock используют display:flex от td, text-align не нужен */
+  .results-table td.col-price,
+  .results-table td.col-stock { justify-content: flex-end; }
+}
